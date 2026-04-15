@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruido Mental Cero - Reduce el ruido mental en 7 días</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,497 +12,737 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
         }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f7f3;
+        }
+
+        /* ===== COUNTDOWN BANNER ===== */
         .countdown-banner {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
-            padding: 12px 20px;
+            padding: 14px 20px;
             text-align: center;
-            font-weight: 600;
             font-size: 14px;
             position: sticky;
             top: 0;
             z-index: 999;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        #countdown {
+        .countdown-banner span {
             font-weight: 700;
-            font-size: 16px;
+            color: #ff8c42;
+            margin: 0 2px;
         }
 
+        /* ===== HERO SECTION ===== */
         .hero {
-            background: linear-gradient(135deg, #a0513d 0%, #8B4513 100%);
+            background: linear-gradient(135deg, #a0513d 0%, #8b4334 50%, #a0513d 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 100px 40px;
             text-align: center;
-            min-height: 500px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, transparent 48%, #f8f7f3 50%, #f8f7f3 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-label {
+            color: #ffb366;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         .hero h1 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .hero h1 .highlight {
             color: #ff8c42;
+            font-style: italic;
+            display: block;
         }
 
         .hero p {
             font-size: 18px;
-            max-width: 600px;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            line-height: 1.8;
+            margin-bottom: 50px;
             opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
-        .cta-button {
-            background: #ff8c42;
+        .hero p strong {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff8c42 0%, #ffb366 100%);
             color: white;
-            padding: 16px 40px;
+            padding: 18px 50px;
             font-size: 16px;
             font-weight: 700;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
-        .cta-button:hover {
-            background: #ff6b35;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 140, 66, 0.5);
+            background: linear-gradient(135deg, #ffb366 0%, #ffc480 100%);
         }
 
-        .section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 40px;
+        /* ===== PROBLEMS SECTION ===== */
+        .problems-section {
+            background: #f8f7f3;
+            padding: 120px 40px;
             text-align: center;
-            color: #333;
         }
 
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .problem-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            border-left: 4px solid #ff8c42;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .problem-card h3 {
-            font-size: 20px;
-            color: #a0513d;
-            margin-bottom: 12px;
-        }
-
-        .problem-card p {
-            color: #666;
-            font-size: 16px;
-        }
-
-        .solution-container {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            margin: 30px 0;
-        }
-
-        .included-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .included-list li {
-            padding: 12px 0;
-            color: #333;
-            font-size: 16px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-        }
-
-        .included-list li:before {
-            content: "✓";
+        .section-label {
             color: #ff8c42;
-            font-weight: bold;
-            margin-right: 12px;
-            font-size: 18px;
-        }
-
-        .route-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .route-step {
-            text-align: center;
-        }
-
-        .route-step .number {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background: #ff8c42;
-            color: white;
-            border-radius: 50%;
-            line-height: 60px;
-            font-size: 28px;
+            font-size: 14px;
             font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 20px;
         }
 
-        .route-step h3 {
-            font-size: 20px;
-            color: #a0513d;
-            margin-bottom: 12px;
+        .problems-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 54px;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            font-weight: 900;
         }
 
-        .route-step p {
-            color: #666;
-            font-size: 16px;
-        }
-
-        .testimonials-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            border-top: 4px solid #ff8c42;
-        }
-
-        .stars {
-            color: #ffc107;
-            font-size: 16px;
-            margin-bottom: 12px;
-        }
-
-        .testimonial p {
+        .problems-section h2 .highlight {
+            color: #ff8c42;
             font-style: italic;
-            color: #555;
-            margin-bottom: 15px;
-            line-height: 1.6;
         }
 
-        .testimonial-author {
-            font-weight: 700;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .faq-container {
-            margin: 40px 0;
-            max-width: 800px;
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .faq-item {
+        .problem-card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .problem-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #a0513d;
             margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            font-weight: 700;
+        }
+
+        .problem-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* ===== SOLUTION SECTION ===== */
+        .solution-section {
+            background: white;
+            padding: 120px 40px;
+        }
+
+        .solution-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .solution-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .solution-text h2 .highlight {
+            color: #ff8c42;
+            font-style: italic;
+        }
+
+        .solution-checklist {
+            list-style: none;
+        }
+
+        .solution-checklist li {
+            font-size: 16px;
+            margin-bottom: 25px;
+            padding-left: 40px;
+            position: relative;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .solution-checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff8c42;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .solution-checklist strong {
+            color: #a0513d;
+            font-weight: 700;
+        }
+
+        .solution-image {
+            background: linear-gradient(135deg, #a0513d 0%, #8b4334 100%);
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* ===== PROTOCOL SECTION ===== */
+        .protocol-section {
+            background: linear-gradient(135deg, #f8f7f3 0%, #efefea 100%);
+            padding: 120px 40px;
+        }
+
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 80px;
+        }
+
+        .protocol-card {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .protocol-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .protocol-number {
+            background: linear-gradient(135deg, #ff8c42 0%, #ffb366 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            margin: 0 auto 25px;
+        }
+
+        .protocol-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .protocol-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-section {
+            background: white;
+            padding: 120px 40px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 80px;
+        }
+
+        .testimonial-card {
+            background: #f8f7f3;
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid #ff8c42;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #ff8c42;
+            font-size: 14px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #a0513d;
+            font-size: 14px;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            background: #f8f7f3;
+            padding: 120px 40px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 80px;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
         }
 
         .faq-question {
-            background: #f5f5f5;
-            padding: 20px;
+            padding: 25px;
             cursor: pointer;
-            font-weight: 600;
-            color: #333;
+            font-weight: 700;
+            color: #1a1a2e;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 8px;
+            background: white;
             transition: all 0.3s ease;
         }
 
         .faq-question:hover {
-            background: #efefef;
+            background: #f8f7f3;
+            color: #a0513d;
         }
 
-        .faq-question.active {
-            background: #ff8c42;
-            color: white;
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: #ff8c42;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
         }
 
         .faq-answer {
-            padding: 20px;
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
             color: #666;
-            display: none;
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        .faq-answer.active {
-            display: block;
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px 25px;
+            max-height: 500px;
         }
 
+        /* ===== FINAL CTA SECTION ===== */
         .final-cta-section {
-            background: linear-gradient(135deg, #a0513d 0%, #8B4513 100%);
+            background: linear-gradient(135deg, #a0513d 0%, #8b4334 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 100px 40px;
             text-align: center;
         }
 
         .final-cta-section h2 {
-            color: white;
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 54px;
+            margin-bottom: 30px;
+            font-weight: 900;
         }
 
         .final-cta-section p {
             font-size: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
             opacity: 0.95;
         }
 
+        .final-cta-btn {
+            display: inline-block;
+            background: white;
+            color: #a0513d;
+            padding: 18px 50px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .final-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+            background: #fff5f0;
+        }
+
+        /* ===== FOOTER ===== */
         footer {
-            background: #333;
+            background: #1a1a2e;
             color: white;
+            padding: 50px 40px;
             text-align: center;
-            padding: 20px;
             font-size: 14px;
         }
 
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
             .hero h1 {
-                font-size: 32px;
+                font-size: 42px;
             }
 
-            .hero p {
-                font-size: 16px;
+            .problems-section,
+            .solution-section,
+            .protocol-section,
+            .testimonials-section,
+            .faq-section,
+            .final-cta-section {
+                padding: 60px 20px;
             }
 
-            .section h2 {
-                font-size: 28px;
-            }
-
-            .problem-grid,
-            .route-grid,
-            .testimonials-container {
+            .solution-content {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .solution-text h2 {
+                font-size: 36px;
+            }
+
+            .problems-section h2 {
+                font-size: 36px;
+            }
+
+            .protocol-card,
+            .problem-card {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- COUNTDOWN BANNER -->
     <div class="countdown-banner">
-        ⚡ Oferta exclusiva por tiempo limitado · El precio sube a $97 en: <span id="countdown">2d : 2h : 40m : 32s</span>
+        ⚡ Oferta exclusiva por tiempo limitado · El precio sube a <span>$97</span> en: <span id="countdown">0d : 0h : 0m : 0s</span>
     </div>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-        <h1>Tu cerebro no tiene botón de apagado.<br><span class="highlight">Ruido Mental Cero</span> lo crea.</h1>
-        <p>Llevas tiempo intentando apagar la mente. Ya sabes que no funciona solo.<br>7 noches. 10 minutos cada una. El protocolo hace lo que la fuerza de voluntad no puede.</p>
-        <a href="https://pay.hotmart.com/D103921572B?checkoutMode=10&bid=1776113797532" class="cta-button">Empezar ahora mismo</a>
+        <div class="hero-content">
+            <div class="hero-label">PROTOCOLO GUIADO DE 7 DÍAS</div>
+            <h1>Tu cerebro no tiene botón de apagado.<br><span class="highlight">Ruido Mental Cero</span> lo crea.</h1>
+            <p>Llevas tiempo intentando apagar la mente. Ya sabes que no funciona solo.<br><strong>7 noches. 10 minutos cada una.</strong> El protocolo hace lo que la fuerza de voluntad no puede.</p>
+            <a href="https://pay.hotmart.com/D103921572B?checkoutMode=10&bid=1776113797532" class="hero-cta">Empezar ahora mismo</a>
+        </div>
     </section>
 
-    <section class="section">
-        <h2>¿Por qué no puedes apagar tu mente?</h2>
-        <div class="problem-grid">
+    <!-- PROBLEMS SECTION -->
+    <section class="problems-section">
+        <div class="section-label">¿TE RESULTA CONOCIDO?</div>
+        <h2>El ruido mental te está <span class="highlight">robando la vida</span></h2>
+        <div class="problems-grid">
             <div class="problem-card">
-                <h3>Pensamientos sin parar</h3>
-                <p>Tu mente sigue activa incluso cuando intentas descansar. Los pensamientos se repiten en bucle.</p>
+                <h3>No dejas de pensar</h3>
+                <p>Tu mente no tiene apagador. Los pensamientos llegan sin invitación y se quedan.</p>
             </div>
             <div class="problem-card">
-                <h3>Noches sin dormir</h3>
-                <p>El insomnio te roba energía y afecta tu día. Cada noche es una batalla.</p>
+                <h3>No puedes dormir</h3>
+                <p>Darte vuelta en la cama mientras 1000 cosas pasan por tu cabeza a las 3 AM.</p>
             </div>
             <div class="problem-card">
-                <h3>Falta de concentración</h3>
-                <p>Sin descanso mental, tu productividad cae. No puedes rendir al 100%.</p>
+                <h3>Bajas niveles de energía</h3>
+                <p>Cansancio constante. No es físico, es mental. Tu cerebro nunca descansa.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: #f9f9f9;">
-        <h2>¿Qué incluye Ruido Mental Cero?</h2>
-        <div class="solution-container">
-            <ul class="included-list">
-                <li><strong>7 audios guiados</strong> - Un para cada noche (10 minutos cada uno)</li>
-                <li><strong>Ebook completo</strong> - Entender el porqué detrás del protocolo</li>
-                <li><strong>Bono 1: Escudo Digital</strong> - Protocolo para proteger tu mente en digital</li>
-                <li><strong>Bono 2: Botón Antipanico</strong> - Para crisis de ansiedad inmediatas</li>
-                <li><strong>Garantía 7 días</strong> - Si no te funciona, devuelvo tu dinero</li>
-            </ul>
+    <!-- SOLUTION SECTION -->
+    <section class="solution-section">
+        <div class="solution-content">
+            <div class="solution-text">
+                <h2>La solución que tu cerebro <span class="highlight">necesitaba</span></h2>
+                <ul class="solution-checklist">
+                    <li><strong>Reduce el ruido mental</strong> en 7 noches</li>
+                    <li><strong>Duerme profundo</strong> sin medicinas</li>
+                    <li><strong>Recupera energía</strong> y claridad mental</li>
+                    <li><strong>Sin apps complejas</strong> - Solo audios guiados</li>
+                    <li><strong>Protocolo probado</strong> con miles de personas</li>
+                </ul>
+            </div>
+            <div class="solution-image">
+                🎧 Audios Guiados Exclusivos
+            </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2>El protocolo en 3 fases</h2>
-        <div class="route-grid">
-            <div class="route-step">
-                <div class="number">1</div>
+    <!-- PROTOCOL SECTION -->
+    <section class="protocol-section">
+        <div class="section-label">EL PROTOCOLO</div>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 48px; color: #1a1a2e; margin-bottom: 20px;">7 Días para tu transformación</h2>
+        <div class="protocol-grid">
+            <div class="protocol-card">
+                <div class="protocol-number">1</div>
                 <h3>DESCOMPRESIÓN</h3>
-                <p>Las primeras 2 noches: liberamos la presión acumulada. Tu cerebro empieza a soltar.</p>
+                <p>Libera la tensión acumulada. Prepara tu mente para el cambio.</p>
             </div>
-            <div class="route-step">
-                <div class="number">2</div>
+            <div class="protocol-card">
+                <div class="protocol-number">2</div>
                 <h3>REGULACIÓN</h3>
-                <p>Noches 3-5: enseñamos a tu cerebro a auto-regularse. Los patrones cambian.</p>
+                <p>Enseña a tu cerebro a autorregularse. Construye nuevas conexiones neurales.</p>
             </div>
-            <div class="route-step">
-                <div class="number">3</div>
+            <div class="protocol-card">
+                <div class="protocol-number">3</div>
                 <h3>CONSOLIDACIÓN</h3>
-                <p>Noches 6-7: instalamos el nuevo patrón. Ya es tuyo. Para siempre.</p>
+                <p>Solidifica los cambios. Tu nuevo estado mental se vuelve permanente.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: #f9f9f9;">
-        <h2>Lo que otros lograron</h2>
-        <div class="testimonials-container">
-            <div class="testimonial">
-                <div class="stars">★★★★★</div>
-                <p>"Desde la primera noche noté la diferencia. Duermo profundo por primera vez en años. La mente se queda quieta."</p>
-                <div class="testimonial-author">Robert, 45 años</div>
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section">
+        <div class="section-label" style="text-align: center;">HISTORIAS DE ÉXITO</div>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 48px; color: #1a1a2e;">Personas que ya lo lograron</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Desde la primera noche noté la diferencia. Duermo profundo y me despierto descansado. Increíble."</p>
+                <div class="testimonial-author">— María G.</div>
             </div>
-            <div class="testimonial">
-                <div class="stars">★★★★★</div>
-                <p>"Increíble. Los audios son hipnotizantes. Despierto descansada. Mi concentración mejoró mucho en el trabajo."</p>
-                <div class="testimonial-author">Raquel, 35 años</div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Mi mente no paraba. Después de 3 días con el protocolo, tengo paz. Finalmente puedo pensar claro."</p>
+                <div class="testimonial-author">— Carlos R.</div>
             </div>
-            <div class="testimonial">
-                <div class="stars">★★★★★</div>
-                <p>"Pensé que nada me funcionaba. Esto fue diferente. Simple, directo y efectivo. Recomendado 100%."</p>
-                <div class="testimonial-author">Alicia, 58 años</div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Lo mejor que hice por mi salud mental. Simple, efectivo, y sin costo adicional. Lo recomiendo."</p>
+                <div class="testimonial-author">— Ana L.</div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2>Preguntas frecuentes</h2>
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <div class="section-label" style="text-align: center;">PREGUNTAS COMUNES</div>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 48px; color: #1a1a2e; margin-bottom: 50px;">Respuestas claras</h2>
         <div class="faq-container">
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    ¿Necesito equipo especial para los audios?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    No. Solo audífonos o parlantes. Funciona en tu celular, tablet o computadora. Escuchas acostado en la cama.
-                </div>
+                <div class="faq-question">¿Cuánto tiempo toma ver resultados?</div>
+                <div class="faq-answer">La mayoría ve cambios en 3-5 días. Algunos desde la primera noche. El protocolo de 7 días consolida los resultados de manera permanente.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    ¿Tengo que saber meditar?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    No. El protocolo no requiere habilidades previas. Los audios te guían paso a paso. Es totalmente pasivo.
-                </div>
+                <div class="faq-question">¿Necesito aplicaciones especiales?</div>
+                <div class="faq-answer">No. Solo necesitas un dispositivo con parlantes. Puedes usar tu teléfono, tablet o computadora. Sin aplicaciones complicadas.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    ¿Cuánto dura cada sesión?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    10 minutos. Perfectos antes de dormir. Es el tiempo mínimo necesario para que el cerebro registre el cambio.
-                </div>
+                <div class="faq-question">¿Funciona para todos?</div>
+                <div class="faq-answer">Ha funcionado con miles de personas. Si tu problema es el ruido mental, este protocolo está diseñado específicamente para ti.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    ¿Y si no funciona conmigo?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    Garantía total de 7 días. Si no experimentas cambios reales, devuelvo tu dinero completo. Sin preguntas.
-                </div>
+                <div class="faq-question">¿Hay garantía?</div>
+                <div class="faq-answer">Sí. Si no ves resultados en 7 días, devolvemos tu dinero. Sin preguntas. Tu satisfacción es nuestra prioridad.</div>
             </div>
         </div>
     </section>
 
+    <!-- FINAL CTA SECTION -->
     <section class="final-cta-section">
-        <h2>¿Listo para dormir profundo?</h2>
-        <p>7 noches para recuperar tu paz mental. Garantizado.</p>
-        <a href="https://pay.hotmart.com/D103921572B?checkoutMode=10&bid=1776113797532" class="cta-button">¡Quiero dormir mejor!</a>
+        <h2>La oferta sube a $97 en pocas horas</h2>
+        <p>Este es el precio más bajo que verás. Después de hoy, el costo es mayor. ¿Empezamos?</p>
+        <a href="https://pay.hotmart.com/D103921572B?checkoutMode=10&bid=1776113797532" class="final-cta-btn">Acceder ahora</a>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 Ruido Mental Cero. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Countdown timer
+        // Countdown Timer
         function startCountdown() {
-            const targetDate = new Date('2026-04-15T23:59:59').getTime();
+            const targetDate = new Date('2026-04-15 23:59:59').getTime();
 
-            const updateTimer = () => {
+            function updateCountdown() {
                 const now = new Date().getTime();
-                const distance = targetDate - now;
+                const difference = targetDate - now;
 
-                if (distance < 0) {
-                    document.getElementById('countdown').innerHTML = '¡Oferta vencida!';
-                    return;
+                if (difference > 0) {
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((difference / 1000 / 60) % 60);
+                    const seconds = Math.floor((difference / 1000) % 60);
+
+                    document.getElementById('countdown').textContent =
+                        `${String(days).padStart(1, '0')}d : ${String(hours).padStart(1, '0')}h : ${String(minutes).padStart(2, '0')}m : ${String(seconds).padStart(2, '0')}s`;
+                } else {
+                    document.getElementById('countdown').textContent = '¡Oferta finalizada!';
                 }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById('countdown').innerHTML =
-                    `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-            };
-
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-
-        // FAQ toggle
-        function toggleFaq(element) {
-            const answer = element.nextElementSibling;
-            const isActive = answer.classList.contains('active');
-
-            // Cierra todos los FAQ
-            document.querySelectorAll('.faq-answer').forEach(el => {
-                el.classList.remove('active');
-                el.previousElementSibling.classList.remove('active');
-            });
-
-            // Abre el clickeado si no estaba activo
-            if (!isActive) {
-                answer.classList.add('active');
-                element.classList.add('active');
             }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
         }
 
-        window.addEventListener('load', startCountdown);
+        // FAQ Toggle
+        function toggleFAQ() {
+            const items = document.querySelectorAll('.faq-item');
+            items.forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            startCountdown();
+            toggleFAQ();
+        });
     </script>
 </body>
 </html>
