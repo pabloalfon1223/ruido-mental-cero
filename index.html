@@ -267,3 +267,495 @@
             .problem-card p {
                 color: #666;
                 font-size: 
+
+            .solution-checklist li::before {
+                content: '✓';
+                position: absolute;
+                left: 0;
+                color: #ff8c42;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .solution-checklist strong {
+                color: #a0513d;
+                font-weight: 700;
+            }
+
+            .solution-image {
+                background: linear-gradient(135deg, #a0513d 0%, #8b4334 100%);
+                border-radius: 15px;
+                height: 400px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 18px;
+                font-weight: 600;
+                text-align: center;
+                padding: 40px;
+            }
+
+            /* ===== PROTOCOL SECTION ===== */
+            .protocol-section {
+                background: linear-gradient(135deg, #f8f7f3 0%, #efefea 100%);
+                padding: 120px 40px;
+            }
+
+            .protocol-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+                margin-top: 80px;
+            }
+
+            .protocol-card {
+                background: white;
+                padding: 60px 40px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+                border: 1px solid #eee;
+                transition: all 0.3s ease;
+            }
+
+            .protocol-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            }
+
+            .protocol-number {
+                background: linear-gradient(135deg, #ff8c42 0%, #ffb366 100%);
+                color: white;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Playfair Display', serif;
+                font-size: 32px;
+                font-weight: 900;
+                margin: 0 auto 25px;
+            }
+
+            .protocol-card h3 {
+                font-family: 'Playfair Display', serif;
+                font-size: 24px;
+                color: #1a1a2e;
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+
+            .protocol-card p {
+                color: #666;
+                font-size: 15px;
+                line-height: 1.8;
+            }
+
+            /* ===== TESTIMONIALS SECTION ===== */
+            .testimonials-section {
+                background: white;
+                padding: 120px 40px;
+            }
+
+            .testimonials-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+                margin-top: 80px;
+            }
+
+            .testimonial-card {
+                background: #f8f7f3;
+                padding: 40px;
+                border-radius: 15px;
+                border-left: 5px solid #ff8c42;
+                transition: all 0.3s ease;
+            }
+
+            .testimonial-card:hover {
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                transform: translateY(-5px);
+            }
+
+            .stars {
+                color: #ff8c42;
+                font-size: 14px;
+                margin-bottom: 15px;
+                letter-spacing: 2px;
+            }
+
+            .testimonial-text {
+                color: #333;
+                font-size: 15px;
+                line-height: 1.8;
+                margin-bottom: 20px;
+                font-style: italic;
+            }
+
+            .testimonial-author {
+                font-weight: 700;
+                color: #a0513d;
+                font-size: 14px;
+            }
+
+            /* ===== FAQ SECTION ===== */
+            .faq-section {
+                background: #f8f7f3;
+                padding: 120px 40px;
+            }
+
+            .faq-container {
+                max-width: 800px;
+                margin: 0 auto;
+                margin-top: 80px;
+            }
+
+            .faq-item {
+                background: white;
+                margin-bottom: 20px;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+                border: 1px solid #eee;
+            }
+
+            .faq-question {
+                padding: 25px;
+                cursor: pointer;
+                font-weight: 700;
+                color: #1a1a2e;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: white;
+                transition: all 0.3s ease;
+            }
+
+            .faq-question:hover {
+                background: #f8f7f3;
+                color: #a0513d;
+            }
+
+            .faq-question::after {
+                content: '+';
+                font-size: 24px;
+                color: #ff8c42;
+                transition: transform 0.3s ease;
+            }
+
+            .faq-item.active .faq-question::after {
+                transform: rotate(45deg);
+            }
+
+            .faq-answer {
+                padding: 0 25px;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                color: #666;
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 25px 25px 25px;
+                max-height: 500px;
+            }
+
+            /* ===== FINAL CTA SECTION ===== */
+            .final-cta-section {
+                background: linear-gradient(135deg, #a0513d 0%, #8b4334 100%);
+                color: white;
+                padding: 100px 40px;
+                text-align: center;
+            }
+
+            .final-cta-section h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: 54px;
+                margin-bottom: 30px;
+                font-weight: 900;
+            }
+
+            .final-cta-section p {
+                font-size: 18px;
+                margin-bottom: 40px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+                opacity: 0.95;
+            }
+
+            .final-cta-btn {
+                display: inline-block;
+                background: white;
+                color: #a0513d;
+                padding: 18px 50px;
+                font-size: 16px;
+                font-weight: 700;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            }
+
+            .final-cta-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+                background: #fff5f0;
+            }
+
+            /* ===== FOOTER ===== */
+            footer {
+                background: #1a1a2e;
+                color: white;
+                padding: 50px 40px;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            /* ===== ANIMATIONS ===== */
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* ===== RESPONSIVE ===== */
+            @media (max-width: 768px) {
+                .hero {
+                    padding: 60px 20px;
+                    min-height: auto;
+                }
+
+                .hero h1 {
+                    font-size: 42px;
+                }
+
+                .problems-section,
+                .solution-section,
+                .protocol-section,
+                .testimonials-section,
+                .faq-section,
+                .final-cta-section {
+                    padding: 60px 20px;
+                }
+
+                .solution-content {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                .protocol-card,
+                .problem-card {
+                    padding: 30px 20px;
+                }
+            }
+</html>style>
+</head>
+<body>
+        <!-- COUNTDOWN BANNER -->
+        <div class="countdown-banner">
+                    ⚡ Oferta exclusiva por tiempo limitado · El precio sube a <span>$97</span> en: <span id="countdown">0d : 0h : 0m : 0s</span>
+        </div>div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+            <div class="hero-content">
+                        <div class="hero-label">PROTOCOLO GUIADO DE 7 DÍAS</div>div>
+                        <h1>Tu cerebro no tiene botón de apagado.<br><span class="highlight">Ruido Mental Cero</span>span> lo crea.</h1>
+                        <p>Llevas tiempo intentando apagar la mente. Ya sabes que no funciona solo.<br><strong>7 noches. 10 minutos cada una.</strong> El protocolo hace lo que la fuerza de voluntad no puede.</p>
+                        <a href="https://pay.hotmart.com/D103921572B?checkoutMode=10&bid=1776113797532" class="hero-cta">Empezar ahora mismo</a>a>
+            </div>div>
+    </section>section>
+
+    <!-- PROBLEMS SECTION -->
+    <section class="problems-section">
+            <div class="section-label">¿TE RESULTA CONOCIDO?</div>div>
+            <h2>El ruido mental te está <span class="highlight">robando la vida</span>span></h2>
+            <div class="problems-grid">
+                        <div class="problem-card">
+                                        <h3>No dejas de pensar</h3>
+                                        <p>Tu mente no tiene apagador. Los pensamientos llegan sin invitación y se quedan.</p>
+                        </div>div>
+                        <div class="problem-card">
+                                        <h3>No puedes dormir</h3>
+                                        <p>Darte vuelta en la cama mientras 1000 cosas pasan por tu cabeza a las 3 AM.</p>
+                        </div>div>
+                        <div class="problem-card">
+                                        <h3>Bajas niveles de energía</h3>
+                                        <p>Cansancio constante. No es físico, es mental. Tu cerebro nunca descansa.</p>
+                        </div>div>
+            </div>div>
+    </section>section>
+
+    <!-- SOLUTION SECTION -->
+    <section class="solution-section">
+            <div class="solution-content">
+                        <div class="solution-text">
+                                        <h2>La solución que tu cerebro <span class="highlight">necesitaba</span>span></h2>
+                                        <ul class="solution-checklist">
+                                                            <li><strong>Reduce el ruido mental</strong>strong> en 7 noches</li>
+                                                            <li><strong>Duerme profundo</strong> sin medicinas</li>
+                                                            <li><strong>Recupera energía</strong> y claridad mental</li>
+                                                            <li><strong>Sin apps complejas</strong>strong> - Solo audios guiados</li>
+                                                            <li><strong>Protocolo probado</strong> con miles de personas</li>
+                                        </ul>ul>
+                        </div>div>
+                        <div class="solution-image">
+                                        <img src="https://ruidomentalcero.lovable.app/assets/product-bundle-66Xu3Jvr.png" alt="Ruido Mental Cero - Bundle Completo" style="width: 100%; height: auto; max-width: 400px;">
+                        </div>div>
+            </div>div>
+    </section>section>
+
+    <!-- PROTOCOL SECTION -->
+    <section class="protocol-section">
+            <div class="section-label">EL PROTOCOLO</div>div>
+            <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 48px; color: #1a1a2e; margin-bottom: 20px;">7 Días para tu transformación</h2>
+            <div class="protocol-grid">
+                        <div class="protocol-card">
+                                        <div class="protocol-number">1</div>div>
+                                        <h3>DESCOMPRESIÓN</h3>
+                                        <p>Libera la tensión acumulada. Prepara tu mente para el cambio.</p>
+                        </div>div>
+                        <div class="protocol-card">
+                                        <div class="protocol-number">2</div>div>
+                                        <h3>REGULACIÓN</h3>
+                                        <p>Enseña a tu cerebro a autorregularse. Construye nuevas conexiones neurales.</p>
+                        </div>div>
+                        <div class="protocol-card">
+                                        <div class="protocol-number">3</div>div>
+                                        <h3>CONSOLIDACIÓN</h3>
+                                        <p>Solidifica los cambios. Tu nuevo estado mental se vuelve permanente.</p>
+                        </div>div>
+            </div>div>
+    </section>section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section">
+            <div class="section-label" style="text-align: center;">HISTORIAS DE ÉXITO</div>div>
+            <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 48px; color: #1a1a2e;">Personas que ya lo lograron</h2>
+            <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                                        <div class="stars">⭐⭐⭐⭐⭐</div>div>
+                                        <p class="testimonial-text">"Desde la primera noche noté la diferencia. Duermo profundo y me despierto descansado. Increíble."</p>
+                                        <div class="testimonial-author">— María G.</div>div>
+                        </div>div>
+                        <div class="testimonial-card">
+                                        <div class="stars">⭐⭐⭐⭐⭐</div>div>
+                                        <p class="testimonial-text">"Mi mente no paraba. Después de 3 días con el protocolo, tengo paz. Finalmente puedo pensar claro."</p>
+                                        <div class="testimonial-author">— Carlos R.</div>div>
+                        </div>div>
+                        <div class="testimonial-card">
+                                        <div class="stars">⭐⭐⭐⭐⭐</div>div>
+                                        <p class="testimonial-text">"Lo mejor que hice por mi salud mental. Simple, efectivo, y sin costo adicional. Lo recomiendo."</p>
+                                        <div class="testimonial-author">— Ana L.</div>div>
+                        </div>div>
+            </div>div>
+    </section>section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+            <div class="section-label" style="text-align: center;">PREGUNTAS COMUNES</div>div>
+            <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 48px; color: #1a1a2e; margin-bottom: 50px;">Respuestas claras</h2>
+            <div class="faq-container">
+                        <div class="faq-item">
+                                        <div class="faq-question">¿Cuánto tiempo toma ver resultados?</div>div>
+                                        <div class="faq-answer">La mayoría ve cambios en 3-5 días. Algunos desde la primera noche. El protocolo de 7 días consolida los resultados de manera permanente.</div>div>
+                        </div>div>
+                        <div class="faq-item">
+                                        <div class="faq-question">¿Necesito aplicaciones especiales?</div>div>
+                                        <div class="faq-answer">No. Solo necesitas un dispositivo con parlantes. Puedes usar tu teléfono, tablet o computadora. Sin aplicaciones complicadas.</div>div>
+                        </div>div>
+                        <div class="faq-item">
+                                        <div class="faq-question">¿Funciona para todos?</div>div>
+                                        <div class="faq-answer">Ha funcionado con miles de personas. Si tu problema es el ruido mental, este protocolo está diseñado específicamente para ti.</div>div>
+                        </div>div>
+                        <div class="faq-item">
+                                        <div class="faq-question">¿Hay garantía?</div>div>
+                                        <div class="faq-answer">Sí. Si no ves resultados en 7 días, devolvemos tu dinero. Sin preguntas. Tu satisfacción es nuestra prioridad.</div>div>
+                        </div>div>
+            </div>div>
+    </section>section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="final-cta-section">
+            <h2>La oferta sube a $97 en pocas horas</h2>
+            <p>Este es el precio más bajo que verás. Después de hoy, el costo es mayor. ¿Empezamos?</p>
+            <a href="https://pay.hotmart.com/D103921572B?checkoutMode=10&bid=1776113797532" class="final-cta-btn">Acceder ahora</a>a>
+    </section>section>
+
+    <!-- FOOTER -->
+    <footer>
+                <p>&copy; 2026 Ruido Mental Cero. Todos los derechos reservados.</p>p>
+    </footer>
+
+        <script>
+                    // Countdown Timer
+                    function startCountdown() {
+                                    const targetDate = new Date('2026-04-15 23:59:59').getTime();
+
+                                    function updateCountdown() {
+                                                        const now = new Date().getTime();
+                                                        const difference = targetDate - now;
+
+                                                        if (difference > 0) {
+                                                                                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                                                                                const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+                                                                                const minutes = Math.floor((difference / 1000 / 60) % 60);
+                                                                                const seconds = Math.floor((difference / 1000) % 60);
+
+                                                                                document.getElementById('countdown').textContent =
+                                                                                                            `${String(days).padStart(1, '0')}d : ${String(hours).padStart(1, '0')}h : ${String(minutes).padStart(2, '0')}m : ${String(seconds).padStart(2, '0')}s`;
+                                                        } else {
+                                                                                document.getElementById('countdown').textContent = '¡Oferta finalizada!';
+                                                        }
+                                    }
+
+                                    updateCountdown();
+                                    setInterval(updateCountdown, 1000);
+                    }
+
+                    // FAQ Toggle
+                    function toggleFAQ() {
+                                    const items = document.querySelectorAll('.faq-item');
+                                    items.forEach(item => {
+                                                        item.querySelector('.faq-question').addEventListener('click', () => {
+                                                                                item.classList.toggle('active');
+                                                        });
+                                    });
+                    }
+
+                    // Initialize
+                    document.addEventListener('DOMContentLoaded', () => {
+                                    startCountdown();
+                                    toggleFAQ();
+                    });
+        </script>
+</body>
+</html>
+        </script>
+    </footer></p></p></strong></li></li></strong></strong></li></li></strong></p></h1></span>
+</body>Page_Down            
