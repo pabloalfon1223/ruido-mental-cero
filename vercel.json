@@ -1,8 +1,32 @@
 {
-    "rewrites": [
-          {
-                  "source": "/(.*)",
-                  "destination": "/api/index.js"
-          }
-    ]
+      "headers": [
+              {
+                        "source": "/(.*)",
+                        "headers": [
+                                    {
+                                                  "key": "Cache-Control",
+                                                  "value": "public, max-age=3600"
+                                    }
+                        ]
+              },
+              {
+                        "source": ".*\\.html$",
+                        "headers": [
+                                    {
+                                                  "key": "Content-Type",
+                                                  "value": "text/html; charset=utf-8"
+                                    },
+                                    {
+                                                  "key": "Cache-Control",
+                                                  "value": "public, max-age=3600"
+                                    }
+                        ]
+              }
+      ],
+      "rewrites": [
+              {
+                        "source": "/(.*)",
+                        "destination": "/api/index.js"
+              }
+      ]
 }
